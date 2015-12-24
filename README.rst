@@ -27,9 +27,9 @@ Add ``nnoremap <f9> :tabe %:p:h<cr>`` to your vimrc, so that you could use ``<f9
 Known issue
 -----------
 
-1. (Not neovim) After opening ranger once and back to vim, you can't use arrow-up/arrow-down to observe vim command line ":" history doesn't work anymore (unless restart vim).
+1. (Only for vanilla neovim) After opening ranger once and back to vim, you can't use arrow-up/arrow-down to observe vim command line ":" history doesn't work anymore (unless restart vim).
    Workaground: use Ctrl+UP/DOWN to observe history, instead of just UP/DOWN.
-2. (For neovim) some shortcut don't work, such as "F8", "<c-h>" because of neovim limitation.
+2. (Only for neovim) some shortcut don't work, such as "F8", "<c-h>" because of neovim limitation.
 
 Notes
 -----
