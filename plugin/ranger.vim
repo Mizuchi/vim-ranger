@@ -37,6 +37,7 @@ function! s:RangerChooserForNeoVim(dirname)
     function! callback.on_exit()
         try
             if filereadable(self.tempname)
+                exec 'bw!'
                 let names = readfile(self.tempname)
                 exec 'edit ' . fnameescape(names[0])
                 for name in names[1:]
