@@ -35,6 +35,7 @@ endfunction
 function! s:RangerChooserForNeoVim(dirname)
     let callback = {'tempname': tempname()}
     function! callback.on_exit()
+    exec 'bdelete!'
         try
             if filereadable(self.tempname)
                 let names = readfile(self.tempname)
