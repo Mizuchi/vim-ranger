@@ -33,8 +33,8 @@ function! s:RangerChooserForAncientVim(dirname)
 endfunction
 
 function! s:RangerChooserForNeoVim(dirname)
-    let callback = {'tempname': tempname()}
-    function! callback.on_exit()
+    let s:callback = {'tempname': tempname()}
+    function! s:callback.on_exit(id, exit_status, event) dict abort
         try
             if filereadable(self.tempname)
                 let names = readfile(self.tempname)
@@ -45,8 +45,8 @@ function! s:RangerChooserForNeoVim(dirname)
             endif
         endtry
     endfunction
-    let cmd = 'ranger --choosefiles='.callback.tempname.' '.shellescape(a:dirname)
-    call termopen(cmd, callback)
+    let cmd = 'ranger --choosefiles='.s:callback.tempname.' '.shellescape(a:dirname)
+    call termopen(cmd, s:callback)
     startinsert
 endfunction
 
