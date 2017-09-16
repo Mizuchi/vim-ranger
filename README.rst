@@ -20,9 +20,9 @@ BTW, don't use it with nerdtree at the same time.
 Configuration
 -------------
 
-Set ranger executable path: `let g:ranger_executable = 'ranger'`
-Custom command to run when ranger exits: `let g:ranger_on_exit = ''`
-Command used to open files: `let g:ranger_open_mode = 'tabe'`
+* Set ranger executable path: `let g:ranger_executable = 'ranger'`
+* Custom command to run when ranger exits: `let g:ranger_on_exit = ''`
+* Command used to open files: `let g:ranger_open_mode = 'tabe'`
 
 Tips
 -----
