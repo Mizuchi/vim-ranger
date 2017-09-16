@@ -17,10 +17,16 @@ When you open a file in ranger, it will be opened in vim.
 You could also select multiple files and open'em all at once (use ``v`` to select multiple files in ranger).
 BTW, don't use it with nerdtree at the same time. 
 
+Configuration
+-------------
+
+Custom command to run when ranger exits: `let g:ranger_on_exit = ''`
+
 Tips
 -----
 
 You can add ``nnoremap <f3> :tabe %:p:h<cr>`` to your .vimrc so that you could use ``<f3>`` to open new files in new tab.
+Clear up lingering buffers after ranger exits: `let g:ranger_on_exit = 'bw!'`
 
 Known issue
 -----------
