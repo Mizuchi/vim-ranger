@@ -29,6 +29,10 @@ Tips
 You can add ``nnoremap <f3> :tabe %:p:h<cr>`` to your .vimrc so that you could use ``<f3>`` to open new files in new tab.
 Clear up lingering buffers after ranger exits: `let g:ranger_on_exit = 'bw!'`
 
+Configuration
+-------------
+Command used to open files: `let g:ranger_open_mode = 'tabe'`
+
 Known issue
 -----------
 
