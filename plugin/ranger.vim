@@ -6,6 +6,10 @@ if !exists('g:ranger_executable')
   let g:ranger_executable = 'ranger'
 endif
 
+if !exists('g:ranger_open_mode')
+  let g:ranger_open_mode = 'tabe'
+endif
+
 function! s:RangerChooserForAncientVim(dirname)
     let temp = tempname()
     if has("gui_running")
@@ -31,7 +35,7 @@ function! s:RangerChooserForAncientVim(dirname)
     filetype detect
     " open any remaning items in new tabs
     for name in names[1:]
-        exec 'tabe ' . fnameescape(name)
+        exec g:ranger_open_mode . ' ' . fnameescape(name)
         filetype detect
     endfor
     redraw!
@@ -40,12 +44,15 @@ endfunction
 function! s:RangerChooserForNeoVim(dirname)
     let s:callback = {'tempname': tempname()}
     function! s:callback.on_exit(id, exit_status, event) dict abort
+        if exists('g:ranger_on_exit')
+          exec g:ranger_on_exit
+        endif
         try
             if filereadable(self.tempname)
                 let names = readfile(self.tempname)
                 exec 'edit ' . fnameescape(names[0])
                 for name in names[1:]
-                    exec 'tabe ' . fnameescape(name)
+                    exec g:ranger_open_mode . ' ' . fnameescape(name)
                 endfor
             endif
         endtry
