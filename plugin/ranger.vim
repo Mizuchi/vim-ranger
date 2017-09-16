@@ -1,6 +1,10 @@
 " forked from 
 " https://github.com/hut/ranger/blob/master/examples/vim_file_chooser.vim
 "
+if !exists('g:ranger_open_mode')
+  let g:ranger_open_mode = 'tabe'
+endif
+
 function! s:RangerChooserForAncientVim(dirname)
     let temp = tempname()
     if has("gui_running")
@@ -26,7 +30,7 @@ function! s:RangerChooserForAncientVim(dirname)
     filetype detect
     " open any remaning items in new tabs
     for name in names[1:]
-        exec 'tabe ' . fnameescape(name)
+        exec g:ranger_open_mode . ' ' . fnameescape(name)
         filetype detect
     endfor
     redraw!
@@ -40,7 +44,7 @@ function! s:RangerChooserForNeoVim(dirname)
                 let names = readfile(self.tempname)
                 exec 'edit ' . fnameescape(names[0])
                 for name in names[1:]
-                    exec 'tabe ' . fnameescape(name)
+                    exec g:ranger_open_mode . ' ' . fnameescape(name)
                 endfor
             endif
         endtry

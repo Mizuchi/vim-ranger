@@ -22,6 +22,10 @@ Tips
 
 You can add ``nnoremap <f3> :tabe %:p:h<cr>`` to your .vimrc so that you could use ``<f3>`` to open new files in new tab.
 
+Configuration
+-------------
+Command used to open files: `let g:ranger_open_mode = 'tabe'`
+
 Known issue
 -----------
 
