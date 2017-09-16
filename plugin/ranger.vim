@@ -1,12 +1,17 @@
 " forked from 
 " https://github.com/hut/ranger/blob/master/examples/vim_file_chooser.vim
 "
+
+if !exists('g:ranger_executable')
+  let g:ranger_executable = 'ranger'
+endif
+
 function! s:RangerChooserForAncientVim(dirname)
     let temp = tempname()
     if has("gui_running")
-        exec 'silent !xterm -e ranger --choosefiles=' . shellescape(temp) . ' ' . a:dirname
+        exec 'silent !xterm -e ' . g:ranger_executable . ' --choosefiles=' . shellescape(temp) . ' ' . a:dirname
     else
-        exec 'silent !ranger --choosefiles=' . shellescape(temp) . ' ' . a:dirname
+        exec 'silent !' . g:ranger_executable . ' --choosefiles=' . shellescape(temp) . ' ' . a:dirname
     endif
     if !filereadable(temp)
         " close window if nothing to read, probably user closed ranger
@@ -45,7 +50,7 @@ function! s:RangerChooserForNeoVim(dirname)
             endif
         endtry
     endfunction
-    let cmd = 'ranger --choosefiles='.s:callback.tempname.' '.shellescape(a:dirname)
+    let cmd = g:ranger_executable . ' --choosefiles='.s:callback.tempname.' '.shellescape(a:dirname)
     call termopen(cmd, s:callback)
     startinsert
 endfunction

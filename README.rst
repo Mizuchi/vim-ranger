@@ -17,6 +17,11 @@ When you open a file in ranger, it will be opened in vim.
 You could also select multiple files and open'em all at once (use ``v`` to select multiple files in ranger).
 BTW, don't use it with nerdtree at the same time. 
 
+Configuration
+-------------
+
+Set ranger executable path: `let g:ranger_executable = 'ranger'`
+
 Tips
 -----
 
