@@ -35,6 +35,9 @@ endfunction
 function! s:RangerChooserForNeoVim(dirname)
     let s:callback = {'tempname': tempname()}
     function! s:callback.on_exit(id, exit_status, event) dict abort
+        if exists('g:ranger_on_exit')
+          exec g:ranger_on_exit
+        endif
         try
             if filereadable(self.tempname)
                 let names = readfile(self.tempname)
